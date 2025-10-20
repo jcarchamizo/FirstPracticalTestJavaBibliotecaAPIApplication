@@ -1,6 +1,6 @@
 # FirstPracticalTestJavaBibliotecaAPIApplication
 
-David, tengo instalado IntelliJ en mi portátil, aunque ahora mismo no sé como conectar todo y realizar carpetas para poner en marcha el proyecto en IntelliJ, por lo tanto, he trabajado conjuntamente con Claude Sonnet 4.5 para hacer los 4 ejercicios y así dejar por aquí el código y si es así, volver a hacer el examen con todo más organizado. 
+David, tengo instalado IntelliJ en mi portátil conjuntamente con Postman para probar la API, aunque ahora mismo no sé como conectar todo y realizar carpetas para poner en marcha el proyecto en IntelliJ, por lo tanto, he trabajado conjuntamente con Claude Sonnet 4.5 para hacer los 4 ejercicios y así dejar por aquí el código y si es así, volver a hacer el examen con todo más organizado. 
 
 Este documento sirve como README preliminar para la presentación de cuatro ejercicios prácticos desarrollados en el lenguaje de programación Java. 
 
@@ -35,7 +35,92 @@ Implementa los siguientes endpoints:
 ○ Los nombres no pueden estar vacíos.
 ○ Si se elimina un autor, sus libros también deben eliminarse (cascade).
 
-Tal como te he comentado, el desarrollo se divide en 4 ejercicios: 
+En primer luga, se pone en marcha la configuración de los archivos con el siguiente código: 
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.0</version>
+        <relativePath/>
+    </parent>
+    
+    <groupId>com.biblioteca</groupId>
+    <artifactId>biblioteca-api</artifactId>
+    <version>1.0.0</version>
+    <name>Biblioteca API</name>
+    <description>API REST para gestionar biblioteca online</description>
+    
+    <properties>
+        <java.version>17</java.version>
+    </properties>
+    
+    <dependencies>
+        <!-- Spring Boot Starter Web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        
+        <!-- Spring Boot Starter Data JPA -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        
+        <!-- Spring Boot Starter Validation -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        
+        <!-- H2 Database (para desarrollo) -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        
+        <!-- Spring Boot DevTools (opcional, para desarrollo) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        
+        <!-- Lombok (opcional, pero útil) -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        
+        <!-- Spring Boot Starter Test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+
+A continuación, los 4 ejercicios divididos por el código para cada uno: 
 
 Ejercicio 1 – Entidades (30 min)
 Crea las clases Author y Book con las siguientes propiedades:
